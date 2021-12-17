@@ -1,6 +1,7 @@
-@extends('templates.template')
+@extends('layouts.app')
 
 @section('content')
+    @include('layouts.headers.header')
 
   <div class="container">
     <form class="row g-3">

@@ -22,7 +22,7 @@
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">Telefone</th>
-                        <th scope="col"></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
