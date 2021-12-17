@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsuarioRequest;
 use App\Models\UsuarioModel as UsuarioModel;
+use App\Models\VeiculoModel as VeiculoModel;
 
 class UsuarioController extends Controller
 {
     private $usuario;
+    private $veiculo;
 
     public function __construct()
     {
         $this->usuario = new UsuarioModel();
+        $this->veiculo = new VeiculoModel();
     }
 
     public function index()
@@ -23,7 +26,13 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $usuario = $this->usuario->find($id);
-        return view('usuario/showUsuario', compact('usuario'));
+        $veiculos = $this->veiculo->where('id_usuario', $id)->get();
+        if (isset($veiculos)) {
+            $usuario->veiculo = $veiculos;
+            return view('usuario/showUsuario', compact('usuario', 'veiculos'));
+        } else {
+            return view('usuario/showUsuario', compact('usuario'));
+        }
     }
 
     public function create()
@@ -50,14 +59,15 @@ class UsuarioController extends Controller
         return view('usuario/newUsuario', compact('usuario'));
     }
 
-    public function update(UsuarioRequest $request, $id) {
-        $edt = $this -> usuario -> where(['id' => $id]) -> update([
-            'nome' => $request -> nome,
-            'cpf' => $request -> cpf,
-            'email' => $request -> email,
-            'telefone' => $request -> telefone
+    public function update(UsuarioRequest $request, $id)
+    {
+        $edt = $this->usuario->where(['id' => $id])->update([
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'email' => $request->email,
+            'telefone' => $request->telefone
         ]);
-        if($edt){
+        if ($edt) {
             return redirect('usuarios');
         }
     }
