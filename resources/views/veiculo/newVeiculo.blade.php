@@ -50,12 +50,17 @@
       <input type="text" class="form-control" name="cor" id="cor" value="{{$veiculo->cor ?? ''}}" required>
     </div>
 
-    <select class="form-control" name="id_usuario" id="id_usuario" required>
-      <option value="{{$veiculo->relUsuarios->id ?? ''}}">{{$veiculo->relUsuarios->nome ?? 'Proprietario'}}</option>
-      @foreach($usuarios as $usuario)
-          <option value="{{$usuario->id}}">{{$usuario->nome}}</option>
-      @endforeach
-    </select><br>
+    <div class="input-group input-group-alternative mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+      </div>
+      <select class="form-control" name="id_usuario" id="id_usuario" required>
+        <option value="">Selecione o usuário</option>
+        @foreach($usuarios as $usuario)
+        <option value="{{$usuario->id}}" @if(isset($veiculo) && $veiculo->usuario_id == $usuario->id) selected @endif>{{$usuario->nome}}</option>
+        @endforeach
+      </select>
+    </div>
 
     <div class="col-12">
       <button type="submit" class="btn btn-primary">@if(isset($veiculo))Editar @else Cadastrar @endif</button>

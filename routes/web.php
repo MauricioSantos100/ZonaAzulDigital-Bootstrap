@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('/usuarios/{id}',[UsuarioController::class, 'update']);
 	Route::delete('/usuarios/{id}',[UsuarioController::class, 'destroy']);
 
-
 	Route::get('/veiculos', [VeiculoController::class, 'index']);
 	Route::get('/veiculos/create',[VeiculoController::class, 'create']);
 	Route::post('/veiculos',[VeiculoController::class, 'store']);

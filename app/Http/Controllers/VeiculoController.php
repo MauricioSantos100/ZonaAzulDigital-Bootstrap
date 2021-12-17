@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ModelVeiculo;
 use App\Models\UsuarioModel;
 use App\Http\Requests\VeiculoRequest;
+use App\Models\VeiculoModel as VeiculoModel;
 
 
 class VeiculoController extends Controller
@@ -13,7 +13,7 @@ class VeiculoController extends Controller
     private $usuario;
 
     public function __construct() {
-        $this -> veiculo = new ModelVeiculo();
+        $this -> veiculo = new VeiculoModel();
         $this -> usuario = new UsuarioModel();
     }
 
@@ -72,7 +72,8 @@ class VeiculoController extends Controller
 
     public function destroy($id)
     {
-        $del = $this->veiculo->destroy($id);
-        return ($del) ? "sim" : "não";
+        VeiculoModel::findOrFail($id)->delete();
+
+        return redirect('veiculos');
     }
 }

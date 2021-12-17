@@ -9,11 +9,12 @@
         </div>
 
         <div style="text-align: left;">
-            <a href="{{ url('usuarios/create') }}">
+            <a href="{{ url('usuarios/create')}}">
                 <button class="btn btn-success">Cadastrar</button>
             </a>
         </div>
         <br>
+        
         <div class="table-responsive">
             @csrf
             <table class="table align-items-center table-light">
