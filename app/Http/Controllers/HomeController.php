@@ -31,10 +31,24 @@ class HomeController extends Controller
         $quantVeiculos = $this -> veiculo -> all() -> count();
         $quantEstacionamentos = $this -> estacionamento -> all() -> count();
         $quantUsuarios = $this -> usuario -> all() -> count();
-        $dataEstacionamento = $this -> estacionamento -> orderBy('created_at', 'desc') -> first() -> created_at -> format('d/m/Y H:i:s');
-        $dataVeiculo = $this -> veiculo -> orderBy('created_at', 'desc') -> first() -> created_at -> format('d/m/Y H:i:s');
-        $dataUsuario = $this -> usuario -> orderBy('created_at', 'desc') -> first() -> created_at -> format('d/m/Y H:i:s');
-        //format date with hour
+
+        if($quantEstacionamentos != 0){
+            $dataEstacionamento = $this -> estacionamento -> orderBy('created_at', 'desc') -> first() -> created_at -> format('d/m/Y');
+        } else {
+            $dataEstacionamento = null;
+        }
+
+        if($quantVeiculos != 0){
+            $dataVeiculo = $this -> veiculo -> orderBy('created_at', 'desc') -> first() -> created_at -> format('d/m/Y');
+        } else {
+            $dataVeiculo = null;
+        }
+
+        if($quantUsuarios != 0){
+            $dataUsuario = $this -> usuario -> orderBy('created_at', 'desc') -> first() -> created_at -> format('d/m/Y');
+        } else {
+            $dataUsuario = null;
+        }
       
         return view('dashboard', compact('quantVeiculos', 'quantEstacionamentos', 'quantUsuarios', 'dataEstacionamento', 'dataVeiculo', 'dataUsuario'));
         
