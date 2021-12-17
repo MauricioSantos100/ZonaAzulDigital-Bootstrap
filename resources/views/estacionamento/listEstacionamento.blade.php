@@ -1,49 +1,68 @@
-@extends('templates.template')
+@extends('layouts.app')
 
 @section('content')
+@include('layouts.headers.header')
 
 <div class="container">
     <div class="text-center">
-      <h1>Estacionamentos</h1>
+        <h1>Estacionamentos</h1>
     </div>
-    <div class="col-lg-12" style="text-align: right;">
-        <a href="{{url("estacionamentos/create")}}">
+    <div style="text-align: left;">
+        <a href="{{ url('estacionamentos/create') }}">
             <button class="btn btn-success">Cadastrar</button>
         </a>
     </div>
-    @csrf
-    <table class="table table-striped">
-        <thead>
-            <tr>
-            <th scope="col">id</th>
-            <th scope="col">cnpj</th>
-            <th scope="col">nome</th>
-            <th scope="col">email</th>
-            <th scope="col">telefone</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($estacionamento as $estacionamentos)
+    <br>
+
+
+    <div class="table-responsive">
+        @csrf
+        <table class="table align-items-center table-light">
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="row">{{$estacionamentos -> id}}</th>
-                    <th>{{$estacionamentos -> cnpj}}</th>
-                    <th>{{$estacionamentos -> nome}}</th>
-                    <th>{{$estacionamentos -> email}}</th>
-                    <th>{{$estacionamentos -> telefone}}</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CNPJ</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($estacionamento as $estacionamentos)
+                <tr>
                     <th>
-                        <a href="{{url("estacionamentos/$estacionamentos->id")}}">
-                            <button class="btn btn-dark">Visualizar</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-primary">Editar</button>
-                        </a>
-                        <a href="{{url("estacionamentos/$estacionamentos->id")}}" href="" class="js-del">
-                            <button class="btn btn-danger">deletar</button>
+                        <a href="{{ url("estacionamentos/$estacionamentos->id") }}">
+                            {{ $estacionamentos->nome }}
                         </a>
                     </th>
+                    <th>
+                        <a href="{{ url("estacionamentos/$estacionamentos->id") }}">
+                            {{ $estacionamentos->cnpj }}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url("estacionamentos/$estacionamentos->id") }}">
+                            {{ $estacionamentos->email }}
+                        </a>
+                    </th>
+                    <th> <a href="{{ url("estacionamentos/$estacionamentos->id") }}">
+                            {{ $estacionamentos->telefone }}
+                        </a>
+                    </th>
+                    <th style="float: right; display: flex;">
+                        <a style="padding-right: inherit;" href="{{ url("estacionamentos/$estacionamentos->id/edit") }}">
+                            <button class="btn btn-primary">Editar</button>
+                        </a>
+                        <form action="/estacionamentos/{{ $estacionamentos->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\EstacionamentoModel;
+use App\Models\EstacionamentoModel as EstacionamentoModel;
 
 use App\Http\Requests\EstacionamentoRequest;
 
@@ -14,16 +14,16 @@ class EstacionamentoController extends Controller
 
     public function index() {
         $estacionamento = $this -> estacionamento -> all();
-        return view('listEstacionamento', compact('estacionamento'));
+        return view('estacionamento/listEstacionamento', compact('estacionamento'));
     }
 
     public function show($id) {
         $estacionamento = $this -> estacionamento -> find($id);
-        return view('showEstacionamento', compact('estacionamento'));
+        return view('estacionamento/showEstacionamento', compact('estacionamento'));
     }
 
     public function create() {
-        return view('newEstacionamento');
+        return view('estacionamento/newEstacionamento');
     }
 
     public function store(EstacionamentoRequest $request) {
@@ -38,41 +38,37 @@ class EstacionamentoController extends Controller
             'numero' => $request -> numero,
         ]);
         if($cad){
-            return redirect('/');
+            return redirect('estacionamentos');
         }
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $estacionamento = $this -> estacionamento -> find($id);
+        return view('estacionamento/newEstacionamento', compact('estacionamento'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\EstacionamentoRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(EstacionamentoRequest $request, $id)
     {
-        //
+        $edt = $this -> estacionamento -> where(['id' => $id]) -> update([
+            'cnpj' => $request -> cnpj,
+            'nome' => $request -> nome,
+            'email' => $request -> email,
+            'telefone' => $request -> telefone,
+            'rua' => $request -> rua,
+            'bairro' => $request -> bairro,
+            'cidade' => $request -> cidade,
+            'numero' => $request -> numero,
+        ]);
+        if($edt){
+            return redirect('estacionamentos');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $del = $this->estacionamento->destroy($id);
-        return ($del) ? "sim" : "não";
+        EstacionamentoModel::findOrFail($id)->delete();
+
+        return redirect('estacionamentos');
     }
 }
