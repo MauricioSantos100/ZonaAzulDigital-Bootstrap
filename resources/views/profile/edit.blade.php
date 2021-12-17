@@ -115,7 +115,7 @@
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-current-password">{{ __('Senha atual') }}</label>
-                                    <input type="password" name="old_password" id="input-current-password" class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Current Password') }}" value="" required>
+                                    <input type="password" name="old_password" id="input-current-password" class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Senha atual') }}" value="" required>
                                     
                                     @if ($errors->has('old_password'))
                                         <span class="invalid-feedback" role="alert">
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Nova senha') }}</label>
-                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" value="" required>
+                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Nova senha') }}" value="" required>
                                     
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-password-confirmation">{{ __('Confirmar nova senha') }}</label>
-                                    <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm New Password') }}" value="" required>
+                                    <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirmar nova senha') }}" value="" required>
                                 </div>
 
                                 <div class="text-center">
