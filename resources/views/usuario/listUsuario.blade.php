@@ -21,7 +21,9 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
                         <th scope="col">Telefone</th>
+                        <th scope="col">Email</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -33,8 +35,19 @@
                                     {{ $usuarios->nome }}
                                 </a>
                             </th>
-                            <th> <a href="{{ url("usuarios/$usuarios->id") }}">
+                            <th>
+                                <a href="{{ url("usuarios/$usuarios->id") }}">
+                                    {{ $usuarios->cpf }}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="{{ url("usuarios/$usuarios->id") }}">
                                     {{ $usuarios->telefone }}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="{{ url("usuarios/$usuarios->id") }}">
+                                    {{ $usuarios->email }}
                                 </a>
                             </th>
                             <th style="float: right; display: flex;">

@@ -6,8 +6,19 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\VeiculoModel as VeiculoModel;
+use App\Models\EstacionamentoModel as EstacionamentoModel;
+use App\Models\UsuarioModel as UsuarioModel;
+
 class ProfileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this -> veiculo = new VeiculoModel();
+        $this -> usuario = new UsuarioModel();
+        $this -> estacionamento = new EstacionamentoModel();
+    }
     /**
      * Show the form for editing the profile.
      *
@@ -15,7 +26,12 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
+        $quantVeiculos = $this -> veiculo -> all() -> count();
+        $quantEstacionamentos = $this -> estacionamento -> all() -> count();
+        $quantUsuarios = $this -> usuario -> all() -> count();
+      
+        return view('profile.edit', compact('quantVeiculos', 'quantEstacionamentos', 'quantUsuarios'));
+
     }
 
     /**

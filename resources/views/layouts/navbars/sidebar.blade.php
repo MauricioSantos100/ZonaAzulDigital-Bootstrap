@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <h2 class="card-title text-uppercase text-muted mb-0">Zona Azul Digital</h2>
+            <h2 class="card-title text-uppercase text-muted mb-0 text-blue">Zona Azul Digital</h2>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                            <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
                         </span>
                     </div>
                 </a>
@@ -68,11 +68,28 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                    <a class="nav-link text-blue" href="{{ route('home') }}">
+                        <i class="bi bi-house text-blue"></i> {{ __('Inicio') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('usuarios') }}">
+                        <i class="bi bi-people "></i> {{ __('Usuarios') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('veiculos') }}">
+                        <i class="fas fa-car-side"></i> {{ __('Veiculos') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('estacionamentos') }}">
+                        <i class="bi bi-cone-striped"></i> {{ __('Estacionamentos') }}
                     </a>
                 </li>
             </ul>
+            <!-- Divider -->
+
         </div>
     </div>
 </nav>

@@ -24,55 +24,55 @@
       @endif
       @csrf
 
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-12">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-building"></i></span>
         </div>
         <input class="form-control " placeholder="{{ __('Nome') }}" type="text" name="nome" id="nome" value="{{$estacionamento->nome ?? ''}}" required>
       </div>
 
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-6">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-file-earmark-medical-fill"></i></span>
         </div>
         <input class="form-control " placeholder="{{ __('CNPJ') }}" type="text" name="cnpj" id="cnpj" value="{{$estacionamento->cnpj ?? ''}}" required>
       </div>
 
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-6">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
         </div>
         <input class="form-control " placeholder="{{ __('Email') }}" type="text" name="email" id="email" value="{{$estacionamento->email ?? ''}}" required>
       </div>
 
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-4">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
         </div>
         <input class="form-control " placeholder="{{ __('Telefone') }}" type="cel" name="telefone" id="telefone" value="{{$estacionamento->telefone ?? ''}}" required>
       </div>
 
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-6">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-signpost-fill"></i></span>
         </div>
         <input class="form-control " placeholder="{{ __('Rua') }}" type="text" name="rua" id="rua" value="{{$estacionamento->rua ?? ''}}" required>
       </div>
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-2">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-123"></i></span>
         </div>
         <input class="form-control " placeholder="{{ __('Numero') }}" type="text" name="numero" id="numero" value="{{$estacionamento->numero ?? ''}}" required>
       </div>
 
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-6">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-geo-fill"></i></span>
         </div>
         <input class="form-control " placeholder="{{ __('Bairro') }}" type="text" name="bairro" id="bairro" value="{{$estacionamento->bairro ?? ''}}" required>
       </div>
 
-      <div class="input-group input-group-alternative mb-3">
+      <div class="input-group input-group-alternative mb-3 col-6">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="bi bi-map-fill"></i></span>
         </div>

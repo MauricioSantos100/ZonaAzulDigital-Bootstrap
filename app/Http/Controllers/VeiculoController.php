@@ -59,7 +59,7 @@ class VeiculoController extends Controller
 
     public function update(VeiculoRequest $request, $id)
     {
-        $this->veiculos->where(['id'=>$id])->update([
+        $edt=$this->veiculo->where(['id'=>$id])->update([
             'marca'=>$request->marca,
             'modelo'=>$request->modelo,
             'placa'=>$request->placa,
@@ -67,7 +67,9 @@ class VeiculoController extends Controller
             'cor'=>$request->cor,
             'id_usuario'=>$request->id_usuario
         ]);
-        return redirect('veiculos');
+        if($edt){
+            return redirect('veiculos');
+        }
     }
 
     public function destroy($id)
@@ -75,5 +77,11 @@ class VeiculoController extends Controller
         VeiculoModel::findOrFail($id)->delete();
 
         return redirect('veiculos');
+    }
+    
+    public function countVeiculos()
+    {
+        $count = $this -> veiculo -> count();
+        return view('veiculo/countVeiculo', compact('count'));
     }
 }

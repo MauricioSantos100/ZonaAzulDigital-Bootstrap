@@ -3,7 +3,7 @@
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6">
-                    <h1 class="text-white">{{ __('Welcome to Argon Dashboard FREE Laravel Live Preview.') }}</h1>
+                    <h2 class="text-white">{{ __('Bem vindo ao Zona Azul Digital. Um sistema desenvolvido para facilitar sua vida.') }}</h2>
                 </div>
             </div>
         </div>
